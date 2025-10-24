@@ -9,7 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.weatherapp.data.model.Item
+import com.example.weatherapp.data.remote.model.Item
 import com.example.weatherapp.ui.viewmodel.MainViewModel
 
 
@@ -37,8 +37,8 @@ fun ItemRow(item: Item, onClick: () -> Unit) {
             .clickable { onClick() }
             .padding(12.dp)
     ) {
-        Text(item.title, style = MaterialTheme.typography.titleMedium)
+        Text(item.region, style = MaterialTheme.typography.titleMedium)
         Spacer(modifier = Modifier.height(4.dp))
-        Text(item.description, style = MaterialTheme.typography.bodyMedium, maxLines = 1)
+        Text(item.comuna, style = MaterialTheme.typography.bodyMedium, maxLines = 1)
     }
 }

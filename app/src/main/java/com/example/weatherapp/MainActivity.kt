@@ -22,7 +22,6 @@ import com.example.weatherapp.ui.screens.HomeScreen
 import com.example.weatherapp.ui.screens.ProfileScreen
 import com.example.weatherapp.ui.theme.WeatherAppTheme
 import com.example.weatherapp.ui.viewmodel.MainViewModel
-
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,6 +50,7 @@ fun App() {
                     navController.navigate(Routes.detailRoute(id))
                 })
             }
+
 
             composable(Routes.ADD) {
                 AddScreen()

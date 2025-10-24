@@ -34,9 +34,11 @@ fun DetailScreen(itemId: Int, viewModel: MainViewModel, onBack: () -> Unit) {
                 .padding(16.dp)
         ) {
             if (item != null) {
-                Text(item.title, style = MaterialTheme.typography.titleMedium)
+                Text(item.region, style = MaterialTheme.typography.titleMedium)
                 Spacer(Modifier.height(8.dp))
-                Text(item.description, style = MaterialTheme.typography.bodyMedium)
+                Text(item.comuna, style = MaterialTheme.typography.bodyMedium)
+                Spacer(Modifier.height(8.dp))
+                Text(item.humedad.toString(), style = MaterialTheme.typography.bodyMedium)
             } else {
                 Text("Item no encontrado")
             }
