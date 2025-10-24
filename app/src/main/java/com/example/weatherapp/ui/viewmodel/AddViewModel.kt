@@ -1,7 +1,7 @@
 package com.example.weatherapp.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
-import com.example.weatherapp.data.model.FormAddState
+import com.example.weatherapp.data.remote.model.FormAddState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
