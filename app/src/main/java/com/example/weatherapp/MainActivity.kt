@@ -1,5 +1,6 @@
 package com.example.weatherapp
 
+import android.content.Context
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -13,26 +14,37 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.example.weatherapp.data.remote.AppDatabase
 import com.example.weatherapp.navigation.BottomBar
 import com.example.weatherapp.navigation.BottomNavItem
 import com.example.weatherapp.navigation.Routes
 import com.example.weatherapp.ui.screens.AddScreen
 import com.example.weatherapp.ui.screens.DetailScreen
 import com.example.weatherapp.ui.screens.HomeScreen
-import com.example.weatherapp.ui.screens.ProfileScreen
+import com.example.weatherapp.ui.screens.SavedDaoScreen
 import com.example.weatherapp.ui.theme.WeatherAppTheme
+import com.example.weatherapp.ui.viewmodel.ItemViewModel
+import com.example.weatherapp.ui.viewmodel.ItemViewModelFactory
 import com.example.weatherapp.ui.viewmodel.MainViewModel
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val dao = AppDatabase.getDatabase(application).itemDao()
+        val factory = ItemViewModelFactory(dao)
         enableEdgeToEdge()
         setContent {
-            WeatherAppTheme { App() }
+            val viewModel: ItemViewModel = viewModel(factory = factory)
+            WeatherAppTheme {
+                App(application)
+            }
+
         }
     }
 }
+
 @Composable
-fun App() {
+fun App(application: Context) {
     val navController = rememberNavController()
     val bottomItems = listOf(BottomNavItem.Home,  BottomNavItem.Add, BottomNavItem.Others)
 
@@ -55,7 +67,11 @@ fun App() {
             composable(Routes.ADD) {
                 AddScreen()
             }
-            composable(Routes.OTHERS) { ProfileScreen() }
+            composable(Routes.OTHERS) {
+                val dao = AppDatabase.getDatabase(application).itemDao()
+                val factory = ItemViewModelFactory(dao)
+                val viewModel: ItemViewModel = viewModel(factory = factory)
+                SavedDaoScreen(viewModel) }
             composable(
                 route = Routes.DETAIL,
                 arguments = listOf(navArgument("itemId") { type = NavType.IntType })
