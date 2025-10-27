@@ -32,6 +32,10 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.ui.draw.clip
 import com.example.weatherapp.R
 
 
@@ -51,7 +55,7 @@ fun HomeScreen2(
                 title = {
                     Column {
                         Text(
-                            text = "hoy",
+                            text = "Hoy",
                             style = MaterialTheme.typography.bodyMedium,
                             color = MaterialTheme.colorScheme.onSurfaceVariant,
                             modifier = Modifier.fillMaxWidth().padding(horizontal = 175.dp)
@@ -91,29 +95,36 @@ fun HomeScreen2(
                         painter = painterResource(id = R.drawable.solsito),
                         contentDescription = "Fondo de clima",
                         contentScale = ContentScale.Crop,
-                        modifier = Modifier.fillMaxSize()
-
+                        modifier = Modifier
+                            .size(400.dp)
+                            .padding(horizontal = 60.dp)
+                            .padding(vertical = 60.dp)
+                            .fillMaxWidth()
+                            .fillMaxHeight()
+                            .clip(CircleShape)
                     )
 
                     Row(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(horizontal = 16.dp),
+                            .padding(horizontal = 16.dp)
+                            ,
                         horizontalArrangement = Arrangement.SpaceBetween,
                         verticalAlignment = Alignment.CenterVertically
+
                     ) {
                         Text(
-                            text = "HUMEDAD: 3%",
+                            text = "HUMEDAD: 8%",
                             style = MaterialTheme.typography.bodyMedium,
                             color = MaterialTheme.colorScheme.onPrimaryContainer
                         )
                         Text(
-                            text = "TEMPERATURA: 12°C",
+                            text = "TEMPERATURA: 25°C",
                             style = MaterialTheme.typography.bodyMedium,
                             color = MaterialTheme.colorScheme.onPrimaryContainer
                         )
                         Text(
-                            text = "VIENTO: 14-37Km/h" ,
+                            text = "VIENTO: 27Km/h" ,
                             style = MaterialTheme.typography.bodyMedium,
                             color = MaterialTheme.colorScheme.onPrimaryContainer
                         )
