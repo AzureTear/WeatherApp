@@ -32,7 +32,7 @@ import androidx.compose.ui.unit.dp
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeScreen(
+fun HomeScreen2(
     onProfileClick: () -> Unit = {}
 ) {
     var searchText by remember { mutableStateOf("") }

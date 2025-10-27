@@ -21,6 +21,7 @@ import com.example.weatherapp.navigation.Routes
 import com.example.weatherapp.ui.screens.AddScreen
 import com.example.weatherapp.ui.screens.DetailScreen
 import com.example.weatherapp.ui.screens.HomeScreen
+import com.example.weatherapp.ui.screens.HomeScreen2
 import com.example.weatherapp.ui.screens.SavedDaoScreen
 import com.example.weatherapp.ui.theme.WeatherAppTheme
 import com.example.weatherapp.ui.viewmodel.ItemViewModel
@@ -56,18 +57,23 @@ fun App(application: Context) {
             startDestination = Routes.HOME,
             modifier = androidx.compose.ui.Modifier.padding(innerPadding)
         ) {
+            /*
             composable(Routes.HOME) {
                 val vm: MainViewModel = viewModel()
                 HomeScreen(viewModel = vm, onItemClick = { id ->
                     navController.navigate(Routes.detailRoute(id))
                 })
+            }*/
+
+
+            composable(Routes.HOME) {
+                HomeScreen2()
             }
-
-
+            /*
             composable(Routes.ADD) {
                 AddScreen()
-            }
-            composable(Routes.OTHERS) {
+            }*/
+            composable(Routes.ADD) {
                 val dao = AppDatabase.getDatabase(application).itemDao()
                 val factory = ItemViewModelFactory(dao)
                 val viewModel: ItemViewModel = viewModel(factory = factory)
