@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Clear
@@ -26,8 +27,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.foundation.Image
+import com.example.weatherapp.R
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -82,6 +87,13 @@ fun HomeScreen2(
                     modifier = Modifier.fillMaxSize(),
                     contentAlignment = Alignment.BottomCenter
                 ) {
+                    Image(
+                        painter = painterResource(id = R.drawable.solsito),
+                        contentDescription = "Fondo de clima",
+                        contentScale = ContentScale.Crop,
+                        modifier = Modifier.fillMaxSize()
+
+                    )
 
                     Row(
                         modifier = Modifier
@@ -91,17 +103,17 @@ fun HomeScreen2(
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         Text(
-                            text = "humedad",
+                            text = "HUMEDAD: 3%",
                             style = MaterialTheme.typography.bodyMedium,
                             color = MaterialTheme.colorScheme.onPrimaryContainer
                         )
                         Text(
-                            text = "temperatura",
+                            text = "TEMPERATURA: 12°C",
                             style = MaterialTheme.typography.bodyMedium,
                             color = MaterialTheme.colorScheme.onPrimaryContainer
                         )
                         Text(
-                            text = "viento" ,
+                            text = "VIENTO: 14-37Km/h" ,
                             style = MaterialTheme.typography.bodyMedium,
                             color = MaterialTheme.colorScheme.onPrimaryContainer
                         )
@@ -287,8 +299,6 @@ fun HomeScreen2(
                         }
                     }
                 }
-
-
 
             }
 
