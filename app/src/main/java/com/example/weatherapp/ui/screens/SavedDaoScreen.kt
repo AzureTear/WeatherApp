@@ -37,9 +37,7 @@ fun SavedDaoScreen(viewModel: ItemViewModel){
 
     var region by remember { mutableStateOf( "") }
     var comuna by remember { mutableStateOf( "") }
-    var temperatura by remember { mutableStateOf( "") }
-    var viento by remember { mutableStateOf( "") }
-    var humedad by remember { mutableStateOf( "") }
+
 
     Scaffold(
         topBar = {

@@ -6,8 +6,8 @@ class SampleRepository {
     private val items = List(20) { index ->
         Item(
             id = index,
-            region = "Item #$index",
-            comuna = "Descripción detallada del item $index.",
+            region = "Region #$index",
+            comuna = "Descripción detallada de la comuna $index.",
             temperatura = 16,
             viento= 180,
             humedad= 60
